@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html><head><title>Tesla OAuth Callback</title></head>
+<body style="font-family:monospace;padding:40px">
+<h2>Authorization Code</h2>
+<p id="msg">Extracting...</p>
+<pre id="code" style="background:#eee;padding:20px;font-size:18px"></pre>
+<script>
+const p = new URLSearchParams(window.location.search);
+const code = p.get('code');
+const error = p.get('error');
+if (error) {
+  document.getElementById('msg').textContent = 'Error: ' + error;
+} else if (code) {
+  document.getElementById('msg').textContent = 'Copy this code and paste it in your terminal:';
+  document.getElementById('code').textContent = code;
+} else {
+  document.getElementById('msg').textContent = 'No code received.';
+}
+</script>
+</body></html>
